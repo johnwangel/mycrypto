@@ -1,5 +1,3 @@
-import React from 'react';
-import { connect } from 'react-redux';
 import { GET_HEADER } from '../constants/constants';
 
 export const INIT = 'INIT';
@@ -23,7 +21,6 @@ const Process = data => ({
   type : INIT,
   payload : data
 });
-
 
 // add a market from list
 export const addMarket = data => ({

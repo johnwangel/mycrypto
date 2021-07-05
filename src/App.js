@@ -21,6 +21,7 @@ class App extends Component {
   }
 
   handleRemoveMarket(e){
+    if (e.target.id==='select-label') return;
     this.props.removeMarket(e.target.id);
   }
 
@@ -32,9 +33,9 @@ class App extends Component {
           <div className='add_container'>
             { (this.props.Main.unused.length)
                 ? (<select id='market' name='market' onChange={this.handleAddMarket} >
-                      <option value='0'>Add a Cryptocurrency:</option>
+                      <option id='select-label' key='no-value' value='0'>Add a Cryptocurrency:</option>
                     { (this.props.Main.unused)
-                      ? this.props.Main.unused.map ( (item,idx) => <Add key={idx} item={item}/> )
+                      ? this.props.Main.unused.map ( (item,idx) => <Add key={item.id} item={item}/> )
                       : null
                     }
                   </select>)
@@ -43,7 +44,7 @@ class App extends Component {
           </div>
           <ul className='card'>
             { (this.props.Main.used )
-              ? this.props.Main.used.map( (item,idx) => <Card key={idx} item={item} removeMarket={this.handleRemoveMarket} /> )
+              ? this.props.Main.used.map( (item,idx) => <Card key={item.id} item={item} removeMarket={this.handleRemoveMarket} /> )
               : null
             }
           </ul>

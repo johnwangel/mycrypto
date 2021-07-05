@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic|Raleway|Libre+Baskerville&display=swap');
+
 body {
   margin: 0;
   font-family: 'Raleway', sans-serif;
@@ -7,12 +8,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@mixin flex($direction,$justify,$align,$wrap){
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
 .app {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  @include flex(column, flex-start, center, nowrap);
   padding-bottom: 100px;
   padding-top: 160px;
 }
@@ -24,9 +30,7 @@ body {
   height: 70px;
   background-color: black;
   color: white;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  @include flex(row, flex-start, center, nowrap);
   padding-left: Min(5vw,25px);
   span {
     font-weight: bold;
@@ -40,31 +44,24 @@ body {
   margin: 0;
 }
 
-
 .crypto-card {
   position: relative;
   background-color: white;
   border-bottom: 1px solid lightgray;
   list-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  @include flex(row,center,flex-end,nowrap);
   padding: 30px 10px 30px;
   width: Min(80vw, 500px);
   cursor: pointer;
-
 
   .remove {
     position: absolute;
     top: 10px;right:0;
     font-size: 1.5em;
-    justify-content: center;
   }
 
   .identity {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    @include flex(row,flex-start,center,nowrap);
     flex-grow: 1;
 
     img {
@@ -73,10 +70,7 @@ body {
     }
 
     .name {
-      display: flex;
-      flex-direction: column;
-      justify-self: center;
-      align-items: flex-start;
+      @include flex(column,center,flex-start,nowrap);
       .full {
         font-weight: bold;
         flex-grow: 1;
@@ -89,20 +83,15 @@ body {
   }
 
   .price {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
+    @include flex(column,center,flex-end,nowrap);
     flex-grow: 1;
     .usd {
       font-weight: bold;
     }
 
     .change {
+      @include flex(row,center,center,nowrap);
       padding-top: 4px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
 
       .material-icons {
         font-size: 1em;
@@ -111,7 +100,6 @@ body {
 
       &.up {
         color: green;
-
       }
       &.down {
         color: red;
@@ -123,8 +111,7 @@ body {
 .add_container {
   position: fixed;
   top: 70px;
-  display: flex;
-  justify-content: center;
+  @include flex(row,center,center,nowrap);
   z-index: 9;
   width: 100vw;
   height: 100px;
@@ -142,6 +129,7 @@ body {
     background-color: white;
     color: black;
     width: Min(80vw, 500px);
+    appearance: none;
     &:focus {
       outline: 0;
     }

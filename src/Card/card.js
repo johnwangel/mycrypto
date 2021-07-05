@@ -1,10 +1,7 @@
-import React, {Component} from 'react';
-import { useHistory } from "react-router-dom";
 import NumberFormat from 'react-number-format'; //formatting numbers
 
 /*NOTE: Using a functional component as this component doesn't do anything.*/
 function Card(props) {
-  let history = useHistory();
   return (
         <li className="crypto-card">
             { /* Remove button on hover - calls parent removeMarket function */ }
@@ -13,7 +10,7 @@ function Card(props) {
               <div className='icon'>
                 { /*company icons are in public folder*/ }
                 <img src={`/icons/${props.item.symbol.toLowerCase()}.svg`}
-                     alt={`${props.item.symbol}`} />
+                     alt={`${props.item.symbol} logo`} />
               </div>
               <div className='name'>
                 <div className='full'>{props.item.name}</div>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { getData, addMarket, removeMarket } from './Main/actions';
+import { Helmet } from 'react-helmet';
 
 import Card from "./Card/card";
 import Add from "./AddMarket/add";
@@ -28,6 +29,14 @@ class App extends Component {
   render() {
     return (
         <div className="app">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>CryptoTracker Pro</title>
+                <meta name="description" content="Application for tracking market price of CryptoCurrency" />
+                <meta name="keywords" content="Crypocurrency Bitcoin Tracker Market Stock Price" />
+                <meta name="author" content="John Atkins" />
+            </Helmet>
+
           <div className='header'><span>CryptoTracker Pro</span></div>
 
           <div className='add_container'>
